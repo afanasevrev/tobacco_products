@@ -2,7 +2,9 @@ package com.example.client.orders;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
+/**
+ * Класс для заполнения таблицы в форме "admin.fxml"
+ */
 public class Orders {
     public StringProperty ID;
     public StringProperty name;

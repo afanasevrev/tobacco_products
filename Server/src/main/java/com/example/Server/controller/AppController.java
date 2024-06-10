@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AppController {
     @GetMapping("/application")
     private String getApp() {
-        return "Приложение по табачной продукции";
+        return "Приложение по продаже табачной продукции";
     }
+
 }

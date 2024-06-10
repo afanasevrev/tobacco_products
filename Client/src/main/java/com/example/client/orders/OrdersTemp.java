@@ -1,6 +1,9 @@
 package com.example.client.orders;
 import lombok.Getter;
 import lombok.Setter;
+/**
+ * Класс в котором принимаем
+ */
 @Getter
 @Setter
 public class OrdersTemp {
