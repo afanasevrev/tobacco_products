@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.log4j.BasicConfigurator;
+
 import java.io.IOException;
 public class ClientApplication extends Application {
     @Override
@@ -15,6 +17,7 @@ public class ClientApplication extends Application {
         stage.show();
     }
     public static void main(String[] args) {
+        BasicConfigurator.configure();
         launch();
     }
 }
