@@ -7,11 +7,15 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.log4j.Logger;
 /**
  * Контроллер для взаимодействия с приложением JavaFX
  */
 @RestController
 public class AppController {
+    Logger logger = Logger.getLogger(AppController.class);
     @GetMapping("/application")
     private String getApp() {
         return "Приложение по продаже табачной продукции";
@@ -35,6 +39,27 @@ public class AppController {
             }
             e.printStackTrace();
         }
+    }
+    /**
+     * Метод вытягивает из БД список заказов
+     * @return
+     */
+    private List<OrdersTemp> getStudents() {
+        List<OrdersTemp> ordersTemps = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Старт транзакции
+            transaction = session.beginTransaction();
+            ordersTemps = session.createQuery("from OrdersTemp", OrdersTemp.class).getResultList();
+            // Коммит транзакции
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(e);
+        }
+        return ordersTemps;
     }
     /**
      * Метод удаляет из БД заказ
