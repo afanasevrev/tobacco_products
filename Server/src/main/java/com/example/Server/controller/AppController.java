@@ -6,6 +6,7 @@ import com.example.Server.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,22 @@ public class AppController {
     @GetMapping("/application")
     private String getApp() {
         return "Приложение по продаже табачной продукции";
+    }
+    @GetMapping("/getOrders")
+    private List<OrdersTemp> getOrders() {
+        return getOrdersTemp();
+    }
+    @GetMapping("/productShipped/{orderId}")
+    private String setProductShipped(@PathVariable String orderId) {
+        int id = Integer.parseInt(orderId);
+        deleteOrder(id);
+        return "Заказ успешно обработан";
+    }
+    @GetMapping("/create/{productName}&{price}")
+    private String setProduct(@PathVariable String productName, @PathVariable String price) {
+        Products product = new Products(productName, price);
+        writeProducts(product);
+        return "Товар успешно добавлен";
     }
     /**
      * Метод записывает в БД товары
@@ -44,7 +61,7 @@ public class AppController {
      * Метод вытягивает из БД список заказов
      * @return
      */
-    private List<OrdersTemp> getStudents() {
+    private List<OrdersTemp> getOrdersTemp() {
         List<OrdersTemp> ordersTemps = new ArrayList<>();
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {

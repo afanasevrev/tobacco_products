@@ -4,8 +4,7 @@ module com.example.client {
     requires spring.web;
     requires log4j;
     requires spring.core;
-    requires lombok;
-
+    requires static lombok;
     opens com.example.client to javafx.fxml;
     exports com.example.client;
     exports com.example.client.controller;

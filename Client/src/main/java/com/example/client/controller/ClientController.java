@@ -50,7 +50,7 @@ public class ClientController implements Initializable {
      */
     @FXML
     private void setButtonUpdateList() {
-       String url_orders = "http//" + Variables.ip_server + ":" + Variables.port_server + "/getOrders";
+       String url_orders = "http://" + Variables.ip_server + ":" + Variables.port_server + "/getOrders";
        ResponseEntity<List<OrdersTemp>> response = restTemplate.exchange(url_orders, HttpMethod.GET, null, new ParameterizedTypeReference<List<OrdersTemp>>() {});
        observableListOrders.clear();
        for (OrdersTemp ordersTemp: response.getBody()) {
@@ -66,7 +66,7 @@ public class ClientController implements Initializable {
     @FXML
     private void setButtonProductShipped() {
         String orderId = valueOfOrders;
-        String url_product_shipped = "http;//" + Variables.ip_server + ":" + Variables.port_server + "/productShipped/" + orderId;
+        String url_product_shipped = "http://" + Variables.ip_server + ":" + Variables.port_server + "/productShipped/" + orderId;
         try {
             ResponseEntity<String> response = restTemplate.exchange(url_product_shipped, HttpMethod.GET, null, String.class);
             logger.info(response.getBody());
@@ -96,6 +96,9 @@ public class ClientController implements Initializable {
                 logger.info(response.getBody());
             } catch (RuntimeException e) {
                 logger.error("Сервер не доступен");
+            } finally {
+                textFieldProductName.setText("");
+                textFieldPrice.setText("");
             }
         }
     }
