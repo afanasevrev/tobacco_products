@@ -1,14 +1,22 @@
 package com.example.client.controller;
+import com.example.client.variables.Variables;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.apache.log4j.Logger;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
-import com.example.client.orders.Orders;
+import com.example.client.orders.*;
 
 public class ClientController implements Initializable {
     //Создаем экземпляр класса RestTemplate
@@ -40,7 +48,10 @@ public class ClientController implements Initializable {
      */
     @FXML
     private void setButtonUpdateList() {
-       // String
+       String url_orders = "http//" + Variables.ip_server + ":" + Variables.port_server + "/getOrders";
+       ResponseEntity<List<OrdersTemp>> response = restTemplate.exchange(url_orders, HttpMethod.GET, null, new ParameterizedTypeReference<List<OrdersTemp>>() {});
+       observableListOrders.clear();
+       
     }
     @FXML
     private Button buttonProductShipped = new Button();

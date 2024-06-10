@@ -5,8 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.log4j.BasicConfigurator;
-
 import java.io.IOException;
+/**
+ * Точка запуска приложения
+ */
 public class ClientApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
