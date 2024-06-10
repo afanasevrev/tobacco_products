@@ -9,6 +9,7 @@
         <property name="hibernate.connection.password">Marshmellow89</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <mapping class="com.example.Server.db.Admins"/>
+        <mapping class="com.example.Server.db.OrdersTemp"/>
+        <mapping class="com.example.Server.db.Products"/>
     </session-factory>
 </hibernate-configuration>
