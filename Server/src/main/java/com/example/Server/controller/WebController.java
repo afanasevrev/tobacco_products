@@ -7,7 +7,10 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +25,17 @@ public class WebController {
      * @return
      */
     @GetMapping("/")
-    private String getMainPage() {
+    private String getMainPage(Model model) {
+        List<Products> products = getProducts();
+        model.addAttribute("products", products);
         return "main";
+    }
+    @GetMapping("/details/{id}")
+    private String getDetails(Model model, @PathVariable("id") int id) {
+        Products product = getProduct(id);
+        model.addAttribute("selectedProduct", product);
+        model.addAttribute("ordersTemp", new OrdersTemp());
+        return "details";
     }
     /**
      * Метод записывает в БД заказы

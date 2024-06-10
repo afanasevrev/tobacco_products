@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Выбор товара</title>
+    <link   rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Отправьте заявку на покупку товара</h1>
+</div>
+<div>
+    <form action="#" th:action="@{/order}" th:object="${ordersTemp}" method="post">
+        <input type="text" th:value="${selectedProduct.productName}" id="productName" name="Наименование" />
+        <input type="text" th:value="${selectedProduct.price}" id="price" name="Цена" />
+        <p>Имя: <input type="text" placeholder="Введите имя" th:field="*{name}" /></p>
+        <p>Email <input type="text" placeholder="Введите email" th:field="*{email}"/></p>
+        <p>Email <input type="text" placeholder="Введите количество" th:field="*{count}"/></p>
+        <p><input type="submit" value="Отправить" /> <input type="reset" value="Сброс" /></p>
+    </form>
+</div>
+</body>
+</html>

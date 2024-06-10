@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Отправьте заявку на покупку товара</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Отправьте заявку на покупку товара</h1>
+    <div class="card">
+        <div class="card-body">
+            <form action="#" th:action="@{/order}" th:object="${ordersTemp}" method="post">
+                <div class="form-group">
+                    <label for="productName">Наименование</label>
+                    <input type="text" class="form-control" id="productName" name="Наименование" th:value="${selectedProduct.productName}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="price">Цена</label>
+                    <input type="text" class="form-control" id="price" name="Цена" th:value="${selectedProduct.price}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" class="form-control" placeholder="Введите имя" th:field="*{name}" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" placeholder="Введите email" th:field="*{email}" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="count">Количество</label>
+                    <input type="text" class="form-control" placeholder="Введите количество" th:field="*{count}" id="count">
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+                <button type="reset" class="btn btn-secondary">Сброс</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
