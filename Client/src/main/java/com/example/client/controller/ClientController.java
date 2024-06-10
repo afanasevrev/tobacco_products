@@ -1,18 +1,14 @@
-package com.example.client;
+package com.example.client.controller;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import orders.Orders;
 import org.springframework.web.client.RestTemplate;
 import org.apache.log4j.Logger;
-
 import java.net.URL;
 import java.util.ResourceBundle;
+import com.example.client.orders.Orders;
 
 public class ClientController implements Initializable {
     //Создаем экземпляр класса RestTemplate
@@ -39,6 +35,13 @@ public class ClientController implements Initializable {
     private TableColumn<Orders, String> tableColumnCount = new TableColumn<Orders, String>("Кол-во");
     @FXML
     private Button buttonUpdateList = new Button();
+    /**
+     * Реализация кнопки "Обновить список заказов"
+     */
+    @FXML
+    private void setButtonUpdateList() {
+       // String
+    }
     @FXML
     private Button buttonProductShipped = new Button();
     //---------------------------------------------------//
@@ -52,11 +55,14 @@ public class ClientController implements Initializable {
     //---------------------------------------------------//
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Обновляем таблицу для видеоуроков
+        //Обновляем таблицу для заказов
         tableViewOrders.setItems(observableListOrders);
-        //tableColumnVideoId.setCellValueFactory(cellData -> cellData.getValue().idProperty());
-        //tableColumnVideoName.setCellValueFactory(cellData -> cellData.getValue().videoNameProperty());
-        //tableColumnVideoLink.setCellValueFactory(cellData -> cellData.getValue().linkInVideoProperty());
+        tableColumnID.setCellValueFactory(cellData -> cellData.getValue().IDProperty());
+        tableColumnName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        tableColumnEmail.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
+        tableColumnProductName.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
+        tableColumnPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty());
+        tableColumnCount.setCellValueFactory(cellData -> cellData.getValue().countProperty());
         //Фиксируем строку в таблице для видеоматериалов
         tableViewOrders.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             try {
