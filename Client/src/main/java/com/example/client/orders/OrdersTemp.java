@@ -2,7 +2,7 @@ package com.example.client.orders;
 import lombok.Getter;
 import lombok.Setter;
 /**
- * Класс в котором принимаем
+ * Класс в котором принимаем от сервера заказы от клиентов
  */
 @Getter
 @Setter
