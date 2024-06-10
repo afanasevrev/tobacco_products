@@ -17,7 +17,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import com.example.client.orders.*;
-
+/**
+ * Контроллер для взаимодействия с формой "admin.fxml"
+ */
 public class ClientController implements Initializable {
     //Создаем экземпляр класса RestTemplate
     private RestTemplate restTemplate = new RestTemplate();
