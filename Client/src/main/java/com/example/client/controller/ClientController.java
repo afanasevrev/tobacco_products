@@ -67,7 +67,7 @@ public class ClientController implements Initializable {
         String url_product_shipped = "http;//" + Variables.ip_server + ":" + Variables.port_server + "/productShipped/" + orderId;
         try {
             ResponseEntity<String> response = restTemplate.exchange(url_product_shipped, HttpMethod.GET, null, String.class);
-            logger.info("Товар успешно отправлен клиенту");
+            logger.info(response.getBody());
         } catch(RuntimeException e) {
             logger.error("Сервер не доступен");
         }
@@ -89,7 +89,12 @@ public class ClientController implements Initializable {
             String productName = textFieldProductName.getText();
             String price = textFieldPrice.getText();
             String url_create = "http://" + Variables.ip_server + ":" + Variables.port_server + "/create/" + productName + "&" + price;
-            
+            try {
+                ResponseEntity<String> response = restTemplate.exchange(url_create, HttpMethod.GET, null, String.class);
+                logger.info(response.getBody());
+            } catch (RuntimeException e) {
+                logger.error("Сервер не доступен");
+            }
         }
     }
     //---------------------------------------------------//

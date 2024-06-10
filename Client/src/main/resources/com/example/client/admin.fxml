@@ -40,7 +40,7 @@
                      <children>
                         <TextField fx:id="textFieldProductName" layoutX="25.0" layoutY="20.0" prefHeight="25.0" prefWidth="230.0" promptText="Наименование товара" />
                         <TextField fx:id="textFieldPrice" layoutX="25.0" layoutY="70.0" prefHeight="25.0" prefWidth="230.0" promptText="Цена в рублях за шт." />
-                        <Button fx:id="buttonCreate" layoutX="25.0" layoutY="119.0" mnemonicParsing="false" text="Добавить" />
+                        <Button fx:id="buttonCreate" onAction="#setButtonCreate" layoutX="25.0" layoutY="119.0" mnemonicParsing="false" text="Добавить" />
                         <TextArea layoutX="310.0" layoutY="21.0" prefHeight="124.0" prefWidth="196.0" promptText="Если появилась необходимость добавить товар, то пишите наименование товара, цену и нажмите конпку &quot;Добавить&quot;" wrapText="true" />
                      </children>
                   </AnchorPane>
