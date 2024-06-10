@@ -61,6 +61,7 @@ public class ClientController implements Initializable {
     /**
      * Реализация кнопки "Товар отправлен"
      */
+    @FXML
     private void setButtonProductShipped() {
         String orderId = valueOfOrders;
         String url_product_shipped = "http;//" + Variables.ip_server + ":" + Variables.port_server + "/productShipped/" + orderId;
@@ -79,6 +80,18 @@ public class ClientController implements Initializable {
     private TextField textFieldPrice = new TextField();
     @FXML
     private Button buttonCreate = new Button();
+    /**
+     * Реализация кнопки "Добавить товар"
+     */
+    @FXML
+    private void setButtonCreate() {
+        if (!textFieldProductName.getText().isEmpty() && !textFieldPrice.getText().isEmpty()) {
+            String productName = textFieldProductName.getText();
+            String price = textFieldPrice.getText();
+            String url_create = "http://" + Variables.ip_server + ":" + Variables.port_server + "/create/" + productName + "&" + price;
+            
+        }
+    }
     //---------------------------------------------------//
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

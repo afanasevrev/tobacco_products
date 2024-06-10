@@ -29,7 +29,7 @@
                           </columns>
                         </TableView>
                         <Button fx:id="buttonUpdateList" onAction="#setButtonUpdateList" layoutX="14.0" layoutY="250.0" mnemonicParsing="false" text="Обновить список" />
-                        <Button fx:id="buttonProductShipped" layoutX="148.0" layoutY="250.0" mnemonicParsing="false" text="Товар отправлен" />
+                        <Button fx:id="buttonProductShipped" onAction="#setButtonProductShipped" layoutX="148.0" layoutY="250.0" mnemonicParsing="false" text="Товар отправлен" />
                      </children>
                   </AnchorPane>
             </content>
