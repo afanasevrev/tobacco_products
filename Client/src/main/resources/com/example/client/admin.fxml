@@ -28,7 +28,7 @@
                               <TableColumn fx:id="tableColumnCount" prefWidth="122.0" text="Кол-во" />
                           </columns>
                         </TableView>
-                        <Button fx:id="buttonUpdateList" layoutX="14.0" layoutY="250.0" mnemonicParsing="false" text="Обновить список" />
+                        <Button fx:id="buttonUpdateList" onAction="#setButtonUpdateList" layoutX="14.0" layoutY="250.0" mnemonicParsing="false" text="Обновить список" />
                         <Button fx:id="buttonProductShipped" layoutX="148.0" layoutY="250.0" mnemonicParsing="false" text="Товар отправлен" />
                      </children>
                   </AnchorPane>

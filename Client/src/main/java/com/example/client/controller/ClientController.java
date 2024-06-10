@@ -51,10 +51,26 @@ public class ClientController implements Initializable {
        String url_orders = "http//" + Variables.ip_server + ":" + Variables.port_server + "/getOrders";
        ResponseEntity<List<OrdersTemp>> response = restTemplate.exchange(url_orders, HttpMethod.GET, null, new ParameterizedTypeReference<List<OrdersTemp>>() {});
        observableListOrders.clear();
-       
+       for (OrdersTemp ordersTemp: response.getBody()) {
+           Orders order = new Orders(String.valueOf(ordersTemp.getID()), ordersTemp.getName(), ordersTemp.getEmail(), ordersTemp.getProductName(), ordersTemp.getPrice(), ordersTemp.getCount());
+           observableListOrders.add(order);
+       }
     }
     @FXML
     private Button buttonProductShipped = new Button();
+    /**
+     * Реализация кнопки "Товар отправлен"
+     */
+    private void setButtonProductShipped() {
+        String orderId = valueOfOrders;
+        String url_product_shipped = "http;//" + Variables.ip_server + ":" + Variables.port_server + "/productShipped/" + orderId;
+        try {
+            ResponseEntity<String> response = restTemplate.exchange(url_product_shipped, HttpMethod.GET, null, String.class);
+            logger.info("Товар успешно отправлен клиенту");
+        } catch(RuntimeException e) {
+            logger.error("Сервер не доступен");
+        }
+    }
     //---------------------------------------------------//
     //Элементы вкладки "Добавить"
     @FXML
